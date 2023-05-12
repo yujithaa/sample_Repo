@@ -42,9 +42,16 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
           echo Add other actions to build,
           echo test, and deploy your project.
           
-    deploy:
-    #runs-on: ubuntu-latest
+  print-username:
+      runs-on: ubuntu-latest
+
       steps:
+        - name: Print the input name to STDOUT
+          run: echo The username is ${{ inputs.username }}
+   
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: deploy
         run: echo Hello, world!
         #runs-on: ubuntu-latest
