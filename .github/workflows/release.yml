@@ -70,7 +70,7 @@ jobs:
         run: npm i -g npm@latest
 
       - name: "📦 install dependencies"
-        uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@v2
 
       - name: "📊 repository visualizer"
         id: diagram
