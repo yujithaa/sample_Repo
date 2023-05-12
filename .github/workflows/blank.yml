@@ -42,11 +42,13 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
           echo Add other actions to build,
           echo test, and deploy your project.
           
-    #deployment:
+    deploy:
+    #runs-on: ubuntu-latest
+      steps:
+      - name: deploy
+        run: echo Hello, world!
         #runs-on: ubuntu-latest
         #environment: test
         #concurrency: test
         #steps:
-          #- #name: deploy
-          #run: echo Hello, world!
         # ...deployment-specific steps
