@@ -106,7 +106,7 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
         # Runs a single command using the runners shell
       - name: calling a shell script
         run: |
-          cake.cmd
+          cmd.exe
           cake deploy preview
           exit
     
