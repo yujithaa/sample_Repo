@@ -105,7 +105,7 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
       - uses: actions/checkout@v2
         # Runs a single command using the runners shell
       - name: running cmd exe
-        run: cmd
+        run: echo Testing inline print statments
         
       - name: passing args for cake
         run: cake deploy preview
