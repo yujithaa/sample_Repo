@@ -91,7 +91,7 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
         
         echo $target
 
-  testing3:
+  testing_shell_call:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -99,7 +99,13 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
     - name: calling a shell script
       run: bash ./Shell_script_testing.sh apple 5 banana 8 "Fruit Basket" cake deploy preview
 
-    
+  testing_cake_call:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+        # Runs a single command using the runners shell
+      - name: calling a shell script
+        run:  cake_test.cmd cake deploy preview
     
     
     
