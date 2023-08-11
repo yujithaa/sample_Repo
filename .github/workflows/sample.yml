@@ -97,7 +97,7 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
     - uses: actions/checkout@v2
       # Runs a single command using the runners shell
     - name: calling a shell script
-      run: bash ./Shell_script_testing.sh apple 5 banana 8 "Fruit Basket" cake deploy preview
+      run: bash ./Shell_script_testing.sh cake deploy preview
 
   testing_cake_call:
       runs-on: ubuntu-latest
