@@ -100,20 +100,13 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
       run: bash ./Shell_script_testing.sh deploy preview
 
   testing_cake_call:
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       steps:
       - uses: actions/checkout@v2
-        # Runs a single command using the runners shell
-      - name: running cmd exe
-        run: echo Testing inline print statments
-        
       - name: test
-        run: cmd.exe cake deploy preview
-        #shell: cmd
+        shell: cmd
+        run: cake.cmd cake deploy preview
         
-      - name: passing args for cake
-        shell: bash
-        run: cmd.exe cake deploy preview
 
     
     
