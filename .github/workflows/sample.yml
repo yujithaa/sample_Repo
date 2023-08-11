@@ -104,12 +104,15 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
       steps:
       - uses: actions/checkout@v2
         # Runs a single command using the runners shell
-      - name: calling a shell script
-        shell: bash
+      - name: running cmd exe
+        run: cmd.exe
+        
+      - name:  passing args for cake
         run: |
-          cmd.exe
           cake deploy preview
-          exit
+      
+      - name: exiting the cmd
+        run: exit
     
     
     
