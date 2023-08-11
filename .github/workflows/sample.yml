@@ -74,7 +74,7 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
     steps:
     - uses: actions/checkout@v2
       # Runs a single command using the runners shell
-    - name: Run a one-line script
+    - name: Run a multi line shell script
       run: |
         #!/bin/bash        
         echo "File name is Shell_Script.sh"
@@ -91,6 +91,13 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
         
         echo $target
 
+  testing3:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      # Runs a single command using the runners shell
+    - name: calling a shell script
+      run: bash ./Shell_script_testing.sh apple 5 banana 8 "Fruit Basket" 15 cake deploy preview
 
     
     
