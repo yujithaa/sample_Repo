@@ -1,26 +1,19 @@
 #!/bin/bash
-#sh ./Shell_Script_Testing.sh apple 5 banana 8 "Fruit Basket" cake deploy preview
 
-echo "File name is "$0 # holds the current script
-echo $3 # $3 holds banana
-Data=$5
-echo "A $Data costs just $6."
-
-target=$7
-env=$8
-
-echo "Running build target $7 for environment $8"
-echo "Running build target $target for environment $env"
-
+target=$1
+env=$2
 
 case $target in 
 "Deploy" | "deploy") echo -n "Deploying the code";;
 *) target=Default;; esac
 
-echo $target
+case $env in 
+"Preview" | "preview") echo -n "Preview environment";;
+*) env=Development;; esac
+
+echo "Running build target $1 for environment $2"
+powershell -File ./build.ps1 -Target %target% -ScriptArgs --env="%env%"
+
 echo %testing2%
-
-echo "Running build target $7 for environment $8"
-
 
 echo $#
