@@ -1,4 +1,6 @@
 #!/bin/bash
+#sh ./Shell_Script_Testing.sh apple 5 banana 8 "Fruit Basket" cake deploy preview
+
 echo "File name is "$0 # holds the current script
 echo $3 # $3 holds banana
 Data=$5
@@ -19,4 +21,6 @@ echo $target
 echo %testing2%
 
 echo "Running build target $7 for environment $8"
+
+
 echo $#
