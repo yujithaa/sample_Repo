@@ -49,13 +49,50 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
         - name: Print the input name to STDOUT
           run: echo The username is ${{ inputs.username }}
    
-  deploy:
+  printing:
     runs-on: ubuntu-latest
     steps:
       - name: deploy
         run: echo Hello, world!
-        #runs-on: ubuntu-latest
-        #environment: test
-        #concurrency: test
-        #steps:
-        # ...deployment-specific steps
+
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      # Runs a single command using the runners shell
+    - name: Run a one-line script
+      run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+    - name: Run a multi-line script
+      run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+ 
+  testing2:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      # Runs a single command using the runners shell
+    - name: Run a one-line script
+      run: |
+        #!/bin/bash        
+        echo "File name is Shell_Script.sh"
+        Data=banana
+        Rs=6
+        echo "A $Data costs just $Rs"
+        target=deploy
+        env=preview
+        echo "Running build target $target for environment $env"
+        
+        case $target in 
+        "Deploy" | "deploy") echo -n "Deploying the code";;
+        *) target=Default;; esac
+        
+        echo $target
+
+
+    
+    
+    
+    
