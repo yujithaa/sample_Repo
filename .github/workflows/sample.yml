@@ -108,8 +108,9 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
         run: echo Testing inline print statments
         
       - name: test
-        run: cmd.exe cake deploy preview
-        shell: bash
+        #run: cmd.exe cake deploy preview
+        run: deploy preview
+        #shell: bash
         
       - name: passing args for cake
         shell: bash
