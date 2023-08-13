@@ -114,6 +114,14 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
       - name: test
         shell: cmd
         run: cake deploy preview
+
+  testing_sh:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: test
+        shell: bash
+        run: sh ./cake.sh cake deploy preview
         
 
     
