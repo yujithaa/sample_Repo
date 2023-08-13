@@ -110,14 +110,10 @@ jobs: #Groups together all the jobs that run in the CI workflow # This workflow 
   _testing_cake_call2:
       runs-on: windows-latest
       steps:
+      - uses: actions/checkout@v2
       - name: test
-        uses: actions/checkout@v2
-        with:
-           host: ${{ secrets.HOST }}
-           username: ${{ secrets.CF_USERNAME }}
-           key: ${{ secrets.CF_PASSWORD}}
-           shell: cmd
-           run: cake deploy preview
+        shell: cmd
+        run: cake deploy preview
         
 
     
