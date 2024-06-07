@@ -22,7 +22,7 @@ jobs:
       
     - name: Run PowerShell script
       shell: bash
-      run: sh ./cake.sh
+      run: sh ./cake_test.sh
       
 
     
