@@ -20,12 +20,29 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       
-    - name: Run PowerShell script
+    - name: Copying files from build to preview
       shell: powershell
+      env:
+            USERNAME: ${{ secrets.USERNAME }}
+            PASSWORD: ${{ secrets.PASSWORD }}
       run: |
-        cmd.exe /c "ECHO Testing"
-        ./test_cake.cmd
-      
+          $password = ConvertTo-SecureString "$env:PASSWORD" -AsPlainText -Force 
+          $userid = "$env:USERNAME"  
+          $Cred = New-Object System.Management.Automation.PSCredential ($userid, $password) 
+          $Session = New-PSSession -ComputerName "vmsplanweb200.amr.corp.intel.com" -Credential $Cred 
+          
+          Write-Host "Starting to take backup" 
+          $timestamp = Get-Date -Format "dd-MMM-yyyy" 
+          $BkpFolder = "\\VMSPLANWEB200.AMR.CORP.INTEL.COM\D\Websites_Backup\SCAT\SCAT_$timestamp"
+          if (-not (Test-Path $BkpFolder)) {New-Item -ItemType Directory -Path $BkpFolder}
+          Copy-Item -Path "\\VMSPLANWEB200.AMR.CORP.INTEL.COM\D\Websites\SCAT" -Destination $BkpFolder  -Recurse -Force
+          Write-Host "Backup completed"	
+          
+          Write-Host "Starting to deploy"  
+          whoamI
+          cmd.exe /c "cake deploy preview"
+          Write-Host "Completed deployment"
+                
 
     
     
