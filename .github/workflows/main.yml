@@ -21,8 +21,10 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Run PowerShell script
-      shell: cmd
-      run: ./test_cake.cmd
+      shell: powershell
+      run: |
+        cmd.exe /c "ECHO Testing"
+        ./test_cake.cmd
       
 
     
