@@ -11,19 +11,20 @@ on:
     branches: [ "main" ]
 
   workflow_dispatch:
-
+  
 jobs:
   build:
-    runs-on: ubuntu-latest  
-  
-    environment: test
-    concurrency: test
-
+    runs-on: ubuntu-latest
+    
     steps:
-      - name: test
-        shell: powershell
-        run: ./deployment.ps1
-        
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Run PowerShell script
+      shell: pwsh
+      run: |
+        ./deployment.ps1
+      
 
     
     
