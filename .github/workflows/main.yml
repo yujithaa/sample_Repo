@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: test
         shell: powershell
-        run: pwsh ./deployment.ps1
+        run: ./deployment.ps1
         
 
     
